@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2025 Global Data Center Market Comparison — Ask the Report</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cw-navy: #1a1f3c;
+    --cw-teal: #1D9E75;
+    --cw-teal-dark: #0F6E56;
+    --cw-teal-light: #E1F5EE;
+    --cw-teal-mid: #5DCAA5;
+    --cw-gray-100: #f4f4f2;
+    --cw-gray-200: #e8e8e4;
+    --cw-gray-400: #b0afa8;
+    --cw-gray-600: #6b6a64;
+    --cw-gray-800: #2e2d2a;
+    --cw-white: #ffffff;
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+
+  html, body {
+    height: 100%;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cw-navy);
+    color: var(--cw-gray-800);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  #app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-width: 720px;
+    margin: 0 auto;
+    background: var(--cw-white);
+  }
+
+  /* Header */
+  #header {
+    background: var(--cw-navy);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+  }
+
+  #header-logo {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  #header-logo .logo-top {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: var(--cw-teal-mid);
+    text-transform: uppercase;
+  }
+
+  #header-logo .logo-main {
+    font-size: 13px;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 0.01em;
+  }
+
+  #header-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(255,255,255,0.15);
+  }
+
+  #header-title {
+    flex: 1;
+  }
+
+  #header-title h1 {
+    font-size: 13px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.3;
+  }
+
+  #header-title p {
+    font-size: 11px;
+    color: var(--cw-teal-mid);
+    margin-top: 1px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  #header-badge {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--cw-teal-mid);
+    border: 1px solid rgba(93,202,165,0.35);
+    padding: 4px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  /* Messages */
+  #messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: var(--cw-gray-100);
+  }
+
+  #messages::-webkit-scrollbar { width: 4px; }
+  #messages::-webkit-scrollbar-track { background: transparent; }
+  #messages::-webkit-scrollbar-thumb { background: var(--cw-gray-200); border-radius: 2px; }
+
+  .msg-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    animation: fadeUp 0.2s ease;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .msg-row.user {
+    flex-direction: row-reverse;
+  }
+
+  .avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 500;
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .bot .avatar {
+    background: var(--cw-navy);
+    color: var(--cw-teal-mid);
+    border: 1.5px solid rgba(93,202,165,0.3);
+  }
+
+  .user .avatar {
+    background: var(--cw-teal);
+    color: #fff;
+  }
+
+  .bubble {
+    max-width: calc(100% - 80px);
+    padding: 11px 14px;
+    border-radius: var(--radius);
+    font-size: 13.5px;
+    line-height: 1.65;
+  }
+
+  .bot .bubble {
+    background: var(--cw-white);
+    color: var(--cw-gray-800);
+    border: 0.5px solid var(--cw-gray-200);
+    border-top-left-radius: 3px;
+  }
+
+  .user .bubble {
+    background: var(--cw-teal);
+    color: #fff;
+    border-top-right-radius: 3px;
+  }
+
+  /* Typing indicator */
+  .typing-dot {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--cw-gray-400);
+    margin: 0 2px;
+    animation: blink 1.3s infinite;
+  }
+  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes blink { 0%,80%,100%{opacity:0.25} 40%{opacity:1} }
+
+  /* Chips */
+  #chips-area {
+    padding: 0 20px 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    background: var(--cw-gray-100);
+    flex-shrink: 0;
+  }
+
+  .chip {
+    font-size: 12px;
+    font-family: 'DM Sans', sans-serif;
+    padding: 5px 11px;
+    border: 0.5px solid var(--cw-gray-400);
+    border-radius: 20px;
+    cursor: pointer;
+    color: var(--cw-gray-600);
+    background: var(--cw-white);
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .chip:hover {
+    background: var(--cw-teal-light);
+    border-color: var(--cw-teal);
+    color: var(--cw-teal-dark);
+  }
+
+  /* Input area */
+  #input-area {
+    padding: 12px 16px;
+    border-top: 0.5px solid var(--cw-gray-200);
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+    background: var(--cw-white);
+    flex-shrink: 0;
+  }
+
+  #user-input {
+    flex: 1;
+    padding: 10px 13px;
+    font-size: 13.5px;
+    font-family: 'DM Sans', sans-serif;
+    border: 0.5px solid var(--cw-gray-200);
+    border-radius: var(--radius-sm);
+    background: var(--cw-gray-100);
+    color: var(--cw-gray-800);
+    resize: none;
+    height: 40px;
+    line-height: 1.4;
+    transition: border-color 0.15s;
+    overflow: hidden;
+  }
+
+  #user-input:focus {
+    outline: none;
+    border-color: var(--cw-teal);
+    background: var(--cw-white);
+  }
+
+  #user-input::placeholder {
+    color: var(--cw-gray-400);
+  }
+
+  #send-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    border: none;
+    background: var(--cw-teal);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.15s, transform 0.1s;
+  }
+
+  #send-btn:hover { background: var(--cw-teal-dark); }
+  #send-btn:active { transform: scale(0.95); }
+  #send-btn:disabled { background: var(--cw-gray-200); cursor: not-allowed; transform: none; }
+
+  #send-btn svg { width: 16px; height: 16px; }
+
+  /* Footer */
+  #footer {
+    padding: 8px 20px;
+    background: var(--cw-white);
+    border-top: 0.5px solid var(--cw-gray-200);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+
+  #footer span {
+    font-size: 10.5px;
+    color: var(--cw-gray-400);
+    font-family: 'DM Mono', monospace;
+  }
+
+  #footer a {
+    font-size: 10.5px;
+    color: var(--cw-teal);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+  }
+
+  #footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <div id="header">
+    <div id="header-logo">
+      <span class="logo-top">Cushman &amp; Wakefield</span>
+      <span class="logo-main">Data Center Advisory</span>
+    </div>
+    <div id="header-divider"></div>
+    <div id="header-title">
+      <h1>Global Data Center Market Comparison</h1>
+      <p>2025 Report Assistant</p>
+    </div>
+    <div id="header-badge">97 Markets</div>
+  </div>
+
+  <div id="messages">
+    <div class="msg-row bot">
+      <div class="avatar">CW</div>
+      <div class="bubble">Hi there. I can answer questions about Cushman &amp; Wakefield's 2025 Global Data Center Market Comparison — rankings, power trends, regional data, investment activity, and more.<br><br>What would you like to know?</div>
+    </div>
+  </div>
+
+  <div id="chips-area">
+    <button class="chip" onclick="useChip(this)">Top 10 global markets</button>
+    <button class="chip" onclick="useChip(this)">Power availability trends</button>
+    <button class="chip" onclick="useChip(this)">Emerging vs established markets</button>
+    <button class="chip" onclick="useChip(this)">APAC highlights</button>
+    <button class="chip" onclick="useChip(this)">2024 investment activity</button>
+    <button class="chip" onclick="useChip(this)">Renewable energy leaders</button>
+  </div>
+
+  <div id="input-area">
+    <input type="text" id="user-input" placeholder="Ask about rankings, power, investment..." autocomplete="off" />
+    <button id="send-btn" onclick="handleSend()" title="Send">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="8" y1="13" x2="8" y2="3"/><polyline points="4 7 8 3 12 7"/>
+      </svg>
+    </button>
+  </div>
+
+  <div id="footer">
+    <span>© 2025 Cushman &amp; Wakefield. All rights reserved.</span>
+    <a href="https://www.cushmanwakefield.com" target="_blank">cushmanwakefield.com</a>
+  </div>
+
+</div>
+
+<script>
+const SYSTEM = `You are an expert assistant for Cushman & Wakefield's 2025 Global Data Center Market Comparison report. Answer questions based strictly on the report's content. Be concise, specific, and cite figures when available. Never speculate beyond the report. If something isn't covered, say so briefly. Do not use markdown formatting like asterisks or hashes in your responses — write in plain sentences.
+
+KEY REPORT FACTS:
+
+REGIONAL CAPACITY:
+Americas: 20,562MW operational (colo 12,269MW, hyperscale 8,293MW), 4.9% vacancy, 6,423MW under construction, 46,077MW planned. Expected 3.4x total capacity increase.
+EMEA: 9,582MW operational, 8.0% vacancy, 2,935MW under construction, 8,839MW planned. Expected 2.1x increase.
+APAC: 12,206MW operational, 12.4% vacancy, 3,087MW under construction, 11,252MW planned. Expected 2.2x increase.
+
+GLOBAL ESTABLISHED MARKET RANKINGS: 1.Virginia 2.Phoenix 3.Dallas 4.Atlanta 5.Oregon 6.Columbus 7.Beijing 8.Salt Lake City 9.Chicago 10.Shanghai
+
+GLOBAL EMERGING MARKET RANKINGS: 1.Austin/San Antonio 2.Iowa 3.Pennsylvania 4.Abu Dhabi 5.Reno 6.Dubai 7.Minneapolis 8.Berlin 9.Helsinki 10.Munich
+
+AMERICAS ESTABLISHED: 1.Virginia 2.Phoenix 3.Dallas 4.Atlanta 5.Oregon 6.Columbus 7.Salt Lake City 8.Chicago 9.Carolinas 10.Sao Paulo
+APAC ESTABLISHED: 1.Beijing 2.Shanghai 3.Sydney 4.Johor 5.Melbourne 6.Guangzhou 7.Mumbai 8.Osaka 9.Seoul 10.Singapore
+EMEA ESTABLISHED: 1.London 2.Frankfurt 3.Amsterdam 4.Paris 5.Madrid 6.Milan 7.Stockholm 8.Dublin 9.Brussels 10.Johannesburg
+
+AMERICAS EMERGING: 1.Austin/San Antonio 2.Iowa 3.Pennsylvania 4.Reno 5.Minneapolis 6.Kansas City 7.Nashville 8.Indianapolis 9.Central Washington 10.Santiago
+APAC EMERGING: 1.Auckland 2.Brisbane 3.Busan 4.Pune 5.Bengaluru 6.Perth 7.Canberra 8.Taipei 9.Batam 10.Hanoi
+EMEA EMERGING: 1.Abu Dhabi 2.Dubai 3.Berlin 4.Helsinki 5.Zurich 6.Munich 7.Oslo 8.Warsaw 9.Reykjavik 10.Tel Aviv
+
+METHODOLOGY: 20 variables across 4 categories: Market Fundamentals (high-weight: power availability, land availability, market size, pipeline), Terrestrial Variables (land price, fiber, environmental risk, water), Power Variables (power availability, renewable energy, power cost), Political & Regulatory (regulations/incentives, taxes, political stability). 97 markets analyzed globally.
+
+INVESTMENT 2024: Hyperscaler capex reached approx $244B in 2024, up 58% from 2023, expected to grow 31% in 2025. Major hyperscalers: Amazon, Microsoft, Meta, Google. Notable deals: Vantage Data Centers $6.4B raise, DataBank $1.5B from AustralianSuper, Blackstone acquired AirTrunk at $24B valuation, BlackRock/GIP/Microsoft/MGX launched $100B fund for data centers and power, KKR and Energy Capital Partners $50B partnership, DigitalBridge acquired Yondr, Flexential investment from Morgan Stanley Infrastructure Partners and GI Partners.
+
+POWER: Power availability is the #1 concern globally. Many utilities estimate 4+ year wait times to deliver significant power. Dublin has a temporary moratorium on new large-scale power requests. Ohio and Silicon Valley have utility queues exceeding several gigawatts. Solutions include behind-the-meter power, small modular reactors (SMRs), transitional natural gas turbines, renewable energy, restarting legacy plants. Virginia leads globally at 5.9GW operational — larger than the next 3 Americas markets combined. Beijing is 2nd largest globally at 2GW+. Global under construction: approximately 12.5GW in 2024.
+
+TOP MARKETS BY CATEGORY:
+Land availability (top 10): Johor, Brisbane, Virginia, Phoenix, Atlanta, Sydney, Kuala Lumpur, Pennsylvania, Minneapolis, Los Angeles
+Land price lowest: Indianapolis, Iowa, Minneapolis, Reno, Queretaro, Nashville, Carolinas, Austin/SA, Columbus, Dallas
+Fiber connectivity: Singapore, Abu Dhabi, Hong Kong, Beijing, Marseille, Reykjavik, Shanghai, Zurich, Austin/SA, Bangkok
+Renewable energy leaders: Reykjavik (100% renewable), Oslo, Nairobi, Sao Paulo, Copenhagen, Auckland, Vienna, Lisbon, Stockholm, Central Washington
+Power cost (lowest): Reykjavik, Doha, Dammam, Riyadh, Central Washington, Abu Dhabi, Dubai, Jeddah, Istanbul, Austin/SA
+Political stability: Singapore, Auckland, Reykjavik, Zurich, Doha, Prague, Japan, Australia, Dublin, Oslo
+Operator presence: Virginia, London, Tokyo, Shanghai, Seoul, Paris, Toronto, Bangkok, NYC-NNJ, Madrid
+Environmental risk (lowest): Madrid, Oslo, Barcelona, Berlin, NYC-NNJ, Perth, Prague, Brussels, Denver, Melbourne
+
+VACANCY & SUPPLY: 20 markets globally below 5% vacancy, 7 below 1%. Only 8 individual data centers globally offer 20MW+ of available capacity in a single facility. Clients needing 10MW+ largely focused on construction pipeline.
+
+PIPELINE HIGHLIGHTS: Virginia leads globally with 1.8GW under construction, Atlanta is only other market with 1GW+ under construction (1.1GW). Americas under-construction prelease rate 76% excluding hyperscale, 83% including. Virginia 88.7% preleased, Atlanta 88.9% preleased. Virginia has 15.4GW planned, Phoenix 4.7GW, Dallas 4.0GW, Reno 3.4GW, Columbus 3.3GW. 9 markets globally have 100% of under-construction capacity already committed.
+
+SUPPLY CHAIN: Critical components like switchgear, chillers, generators, transformers have 6+ month lead times, some exceeding 1 year. Stockpiling of components became more common in 2024.
+
+FLAPD MARKETS: Frankfurt, London, Amsterdam, Paris, Dublin — largest EMEA markets. London and Dublin crossed 1GW operational. Frankfurt expected to join soon. Amsterdam growth slowed due to 2020 moratorium impact.
+
+SUSTAINABILITY: Data center construction cost exceeds $10M per MW. Global average incentive value: $58,215 per $1M invested (5-year avg $61,451). European markets lead on renewable energy percentage. Hyperscalers targeting net-zero by 2030. Direct-to-chip and immersion cooling growing. New closed-loop liquid cooling systems unlikely to be widespread before 2027.`;
+
+const history = [];
+const messagesEl = document.getElementById('messages');
+const inputEl = document.getElementById('user-input');
+const btnEl = document.getElementById('send-btn');
+
+function addMessage(role, text) {
+  const row = document.createElement('div');
+  row.className = 'msg-row ' + role;
+  const av = document.createElement('div');
+  av.className = 'avatar';
+  av.textContent = role === 'user' ? 'You' : 'CW';
+  const bub = document.createElement('div');
+  bub.className = 'bubble';
+  bub.innerHTML = text.replace(/\n/g, '<br>');
+  row.appendChild(av);
+  row.appendChild(bub);
+  messagesEl.appendChild(row);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+  return bub;
+}
+
+function showTyping() {
+  const row = document.createElement('div');
+  row.className = 'msg-row bot';
+  row.id = 'typing';
+  const av = document.createElement('div');
+  av.className = 'avatar';
+  av.textContent = 'CW';
+  const bub = document.createElement('div');
+  bub.className = 'bubble';
+  bub.innerHTML = '<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>';
+  row.appendChild(av);
+  row.appendChild(bub);
+  messagesEl.appendChild(row);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+}
+
+function hideTyping() {
+  const el = document.getElementById('typing');
+  if (el) el.remove();
+}
+
+function useChip(el) {
+  inputEl.value = el.textContent;
+  document.getElementById('chips-area').style.display = 'none';
+  handleSend();
+}
+
+async function handleSend() {
+  const text = inputEl.value.trim();
+  if (!text || btnEl.disabled) return;
+  inputEl.value = '';
+  btnEl.disabled = true;
+  addMessage('user', text);
+  history.push({ role: 'user', content: text });
+  showTyping();
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: SYSTEM,
+        messages: history.slice(-12)
+      })
+    });
+    const data = await res.json();
+    const reply = data.content?.[0]?.text || 'Sorry, something went wrong. Please try again.';
+    hideTyping();
+    addMessage('bot', reply);
+    history.push({ role: 'assistant', content: reply });
+  } catch(e) {
+    hideTyping();
+    addMessage('bot', 'Unable to connect. Please check your connection and try again.');
+  }
+  btnEl.disabled = false;
+  inputEl.focus();
+}
+
+inputEl.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    handleSend();
+  }
+});
+</script>
+</body>
+</html>
